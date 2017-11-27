@@ -66,6 +66,10 @@ button {
   margin-left: 20px;
 }
 
+.grid {
+  border: 1px solid black;
+}
+
 .board-row, .grid-row {
   display: flex;
 }
