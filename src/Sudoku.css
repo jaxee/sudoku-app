@@ -70,6 +70,14 @@ button {
   border: 1px solid black;
 }
 
+.board-row > div:first-of-type {
+  border-left: 0;
+}
+
+.board > .board-row:last-of-type > div {
+  border-bottom: 0;
+}
+
 .board-row, .grid-row {
   display: flex;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './Sudoku.css';
+import SudokuPuzzle from './SudokuPuzzle';
+
 
 function Square(props) {
   return (
@@ -77,14 +78,17 @@ class Board extends React.Component {
 class Sudoku extends React.Component {
   constructor() {
     super();
+
+    this.puzzle = new SudokuPuzzle(NUMBER_PLACE_STRING);
     this.state = {
-      startingBoard: placeStringTo2dArray(NUMBER_PLACE_STRING),
+      startingBoard: this.puzzle.to2dArray(),
       finalBoard: Array(9).fill(Array(9).fill('.')),
     };
   }
 
   handleClick() {
-    alert("omg I love flags, they represent countries well");
+    console.log("omg I love flags, they represent countries well");
+    this.setState({finalBoard: this.puzzle.to2dArray()});
   }
 
   render() {
@@ -102,39 +106,5 @@ class Sudoku extends React.Component {
 }
 
 let NUMBER_PLACE_STRING = "4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......";
-function placeStringTo2dArray(placeStr) {
-  placeStr = placeStr.replace(/\./g, " ");
-  let arr = placeStr.split('');
-  let grid = [];
-
-  for (var i = 0; i < 81; i += 9) {
-    grid.push(arr.slice(i, i + 9));
-  }
-
-  return grid;
-}
-
-// ========================================
-
-// function calculateWinner(squares) {
-//   const lines = [
-//     [0, 1, 2],
-//     [3, 4, 5],
-//     [6, 7, 8],
-//     [0, 3, 6],
-//     [1, 4, 7],
-//     [2, 5, 8],
-//     [0, 4, 8],
-//     [2, 4, 6]
-//   ];
-//   for (let i = 0; i < lines.length; i++) {
-//     const [a, b, c] = lines[i];
-//     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-//       return squares[a];
-//     }
-//   }
-//   return null;
-// }
-
 
 export default Sudoku;
