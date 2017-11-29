@@ -22,7 +22,7 @@ class Box extends React.Component {
 
   render() {
     return (
-      <div class="grid">
+      <div className="grid">
         <div className="grid-row">
           {this.renderSquare(0, 0)}
           {this.renderSquare(0, 1)}
